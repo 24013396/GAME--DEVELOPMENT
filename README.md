@@ -1,3 +1,5 @@
+NAME: SHAIK HAZEEDMASTHAN
+REG NO: 212224040304
 # EX 3 : Circle Drawing Algorithm
 
 **AIM :**
@@ -22,12 +24,61 @@ Step  6 : Display the output.
 Step 7 : stop.
 
 **Program :**
+#include <stdio.h>
+#include <conio.h>
+#include <graphics.h>
+#include <math.h>
 
+void plotpoints(int xc, int yc, int x, int y) {
+    putpixel(xc + x, yc + y, WHITE);
+    putpixel(xc - x, yc + y, WHITE);
+    putpixel(xc + x, yc - y, WHITE);
+    putpixel(xc - x, yc - y, WHITE);
+    putpixel(xc + y, yc + x, WHITE);
+    putpixel(xc - y, yc + x, WHITE);
+    putpixel(xc + y, yc - x, WHITE);
+    putpixel(xc - y, yc - x, WHITE);
+}
+
+int main() {
+    int gd = DETECT, gm;
+    int xcenter, ycenter, radius;
+    int p, x, y;
+
+    initgraph(&gd, &gm, "C:\\Turboc3\\BGI");  // Update path based on your setup
+
+    printf("Enter the Radius Value:\n");
+    scanf("%d", &radius);
+    printf("Enter the xcenter and ycenter Values:\n");
+    scanf("%d %d", &xcenter, &ycenter);
+
+    x = 0;
+    y = radius;
+    p = 1 - radius;
+
+    plotpoints(xcenter, ycenter, x, y);
+
+    while (x < y) {
+        x++;
+        if (p < 0) {
+            p += 2 * x + 1;
+        } else {
+            y--;
+            p += 2 * (x - y) + 1;
+        }
+        plotpoints(xcenter, ycenter, x, y);
+    }
+
+    getch();
+    closegraph();
+    return 0;
+}
 
 
 **Output :**
+![436533112-288fd400-0631-400a-97a0-4c6d73b0913a](https://github.com/user-attachments/assets/1c182f48-ccc7-4758-b9cb-2217e228ee7d)
 
 
 
 **Result :**
-
+To implement the Bresenham’s algorithm for circle using a c coding verified successfully.
